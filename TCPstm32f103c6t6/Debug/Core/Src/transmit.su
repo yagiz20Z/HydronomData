@@ -1,0 +1,3 @@
+../Core/Src/transmit.c:16:6:transmitData_Init	8	static
+../Core/Src/transmit.c:21:6:HAL_UART_RxCpltCallback	16	static
+../Core/Src/transmit.c:33:6:transmitData	16	static
