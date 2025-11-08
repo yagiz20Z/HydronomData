@@ -14,6 +14,8 @@
 #include "usb_device.h"
 #include <stdio.h>
 
+
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
 void transmitData_Init(void);
 void transmitData(uint8_t *data, uint16_t len);
