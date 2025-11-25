@@ -16,8 +16,7 @@
 
 
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
-void transmitData_Init(void);
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart);
 void transmitData(uint8_t *data, uint16_t len);
 
 

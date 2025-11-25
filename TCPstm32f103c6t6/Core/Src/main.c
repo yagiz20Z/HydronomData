@@ -26,15 +26,22 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "transmit.h"
 #include "receive.h"
 #include "action.h"
+#include  "pid.h"
 
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+#define Kp 1.0f
+#define Ki 0.0f
+#define Kd 0.0f
+
+#define frks 100  // frekans değeri ms cinsinden
+
+static PIDParameters_t PID_SoH;
 
 /* USER CODE END PTD */
 
@@ -63,9 +70,7 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t rx_data_byte; 
 uint8_t rx_buffer[RX_BUFFER_SIZE]; 
-uint16_t rx_buffer_index = 0; 
 /* USER CODE END 0 */
 
 /**
@@ -104,16 +109,17 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-void receiveData_Init(void);
+  receiveData_Init();
+  PID_Init(&PID_SoH, Kp, Ki, Kd);
 
 
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
-  MX_FREERTOS_Init();
+ /* MX_FREERTOS_Init();
 
   /* Start scheduler */
-  osKernelStart();
+ /* osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
 
@@ -125,8 +131,10 @@ void receiveData_Init(void);
 
     /* USER CODE BEGIN 3 */
 
+HAL_UART_RxCpltCallback(&huart1);
+hareket(rx_buffer[0]);
 
-
+HAL_Delay(frks);
   }
   /* USER CODE END 3 */
 }

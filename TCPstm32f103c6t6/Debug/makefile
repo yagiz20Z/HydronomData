@@ -11,6 +11,10 @@ RM := rm -rf
 -include sources.mk
 -include USB_DEVICE/Target/subdir.mk
 -include USB_DEVICE/App/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
 -include Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk
@@ -64,8 +68,8 @@ all: main-build
 main-build: TCPstm32f103c6t6.elf secondary-outputs
 
 # Tool invocations
-TCPstm32f103c6t6.elf TCPstm32f103c6t6.map: $(OBJS) $(USER_OBJS) C:\Users\aliya\projeler\stm\TCPstm32f103c6t6\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TCPstm32f103c6t6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\aliya\projeler\stm\TCPstm32f103c6t6\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TCPstm32f103c6t6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+TCPstm32f103c6t6.elf TCPstm32f103c6t6.map: $(OBJS) $(USER_OBJS) /home/aliyagizuz/projects/HydronomDataTransmit/TCPstm32f103c6t6/STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "TCPstm32f103c6t6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/home/aliyagizuz/projects/HydronomDataTransmit/TCPstm32f103c6t6/STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TCPstm32f103c6t6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

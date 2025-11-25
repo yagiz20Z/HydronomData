@@ -8,10 +8,12 @@
 #ifndef INC_ACTION_H_
 #define INC_ACTION_H_
 
+// basit bir örnek olduğu için sadece teknenin açısı 0'dan uzaklaştıkça hızını artacak şekilde bir pervane çalıştıracak yazdım.
 
 
 
-
+void servopwm(long pulse_width);
+void hareket(float angle);
 
 
 

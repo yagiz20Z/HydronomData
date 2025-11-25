@@ -1,0 +1,2 @@
+../Core/Src/receive.c:22:6:receiveData_Init	1
+../Core/Src/receive.c:29:6:HAL_UART_RxCpltCallback	2

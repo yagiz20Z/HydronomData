@@ -9,6 +9,13 @@
 #define INC_PARSE_H_
 
 
+typedef struct position
+{
+    float x;
+    float y;
+};
+
+
 
 
 

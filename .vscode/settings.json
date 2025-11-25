@@ -1,7 +1,12 @@
 {
     "files.associations": {
         "string.h": "c",
-        "transmit.h": "c"
+        "transmit.h": "c",
+        "comm.h": "c",
+        "receive.h": "c",
+        "usart.h": "c",
+        "compare": "c",
+        "action.h": "c"
     },
     "java.debug.settings.onBuildFailureProceed": true
 }
